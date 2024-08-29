@@ -20,11 +20,11 @@
     @endif
 
     <!-- Login form -->
-    <form method="POST" action="/login">
+    <form method="POST" action="{{ url('/login') }}">
         @csrf
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="admin@example.com" required>
         </div>
         <div>
             <label for="password">Password:</label>

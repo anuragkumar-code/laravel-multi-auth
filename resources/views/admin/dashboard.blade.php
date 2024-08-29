@@ -8,7 +8,10 @@
 </head>
 <body>
 
-    Hello {{Auth::user()->name}}
+    {{-- Hello {{Auth::user()->name}} --}}
+    {{-- helo from admin --}}
+    Hello {{ $user->name }}
+    Hello {{ $user->email }}
 
 </body>
 </html>

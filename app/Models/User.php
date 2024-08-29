@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     // protected $connection = 'mysql';
+    use HasApiTokens, Notifiable;
     protected $fillable = [
         'name',
         'email',
@@ -25,5 +27,12 @@ class User extends Authenticatable
     const ROLE_ACCOUNTS_MANAGER = 'accounts_manager';
     const ROLE_GENERAL_MANAGER = 'general_manager';
 
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return [];
+    }
 
 }
